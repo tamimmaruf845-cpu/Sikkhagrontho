@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sikkhagrontho - Modern Educational Platform</title>
+    <meta name="description"
+        content="Sikkhagrontho is a professional educational platform providing resources for HSC, Admission, Defence, and more.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- styles.css -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- QRCode.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- html2canvas Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <!-- Full-page Loader -->
+    <div id="loader" class="loader-overlay">
+        <div class="loader-container">
+            <div class="orbit-loader">
+                <div class="planet"></div>
+                <div class="moon"></div>
+                <div class="moon moon-2"></div>
+            </div>
+            <h2 class="loader-text">Loading</h2>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="edit-profile-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-edit-modal" class="close-modal">&times;</span>
+            <h2 class="auth-title">Edit Profile</h2>
+            <form id="edit-profile-form">
+                <div class="form-group">
+                    <label for="edit-fullname">Full Name</label>
+                    <input type="text" id="edit-fullname" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-college">College Name</label>
+                    <input type="text" id="edit-college" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-phone">Student Phone</label>
+                    <input type="tel" id="edit-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-guardian">Guardian Phone</label>
+                    <input type="tel" id="edit-guardian" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-blood">Blood Group</label>
+                    <select id="edit-blood" required>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-full">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Avatar Upload Hidden Input -->
+    <input type="file" id="hidden-avatar-input" accept="image/*" class="hidden">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="brand" id="nav-brand">
+                <span class="brand-text">Sikkhagrontho</span>
+            </a>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#explore" class="nav-link">Explore</a></li>
+                <li><a href="#notice" class="nav-link">Notice</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li id="profile-link" class="hidden"><a href="#profile" class="nav-link">Profile</a></li>
+                <li id="login-link"><a href="#login" class="nav-link login-btn">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero" style="position: relative; width: 100%; min-height: 100vh; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-start; padding-bottom: 80px; padding-left: 60px; background: #000;">
+            <!-- Background Image -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Ruppur_Nuclear_Power_Plant_%2C_Ruppur%2C_Pabna.jpg/1280px-Ruppur_Nuclear_Power_Plant_%2C_Ruppur%2C_Pabna.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0;">
+
+            <!-- Dark Overlay — Left Side -->
+            <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.0) 100%); z-index: 1;"></div>
+
+            <!-- Bottom Left Content -->
+            <div style="position: relative; z-index: 2; padding: 0; max-width: 600px; text-align: left; margin-left: 0; margin-right: auto;">
+                <h1 style="color: #ffffff; font-size: 52px; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; text-align: left;">Rooppur Nuclear Power Plant</h1>
+                <p style="color: rgba(255,255,255,0.8); font-size: 16px; margin-bottom: 28px; text-align: left;">The Rooppur Nuclear Power Plant is a 2.4 GWe nuclear power plant in Bangladesh. It consists of two 1200 MWe VVER-1200 reactors. The nuclear power plant is located at Rooppur in Ishwardi Upazila on the bank of the river Padma, about 160 km northwest of Dhaka. It is the country's first nuclear power plant, and the first of the two units is expected to become operational in 2026.
+
+                              Safety review by the IAEA was successfully completed in late 2025.</p>
+                <a href="https://en.wikipedia.org/wiki/Rooppur_Nuclear_Power_Plant" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(255,255,255,0.6); color: #ffffff; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 28px; text-decoration: none; transition: all 0.3s ease;"
+                    onmouseover="this.style.background='#ffffff'; this.style.color='#000000'"
+                        onmouseout="this.style.background='transparent'; this.style.color='#ffffff'">EXPLORE NOW ▶</a>
+            </div>
+        </section>
+
+
+        <!-- What to Watch Section -->
+        <div id="hero-middle-space" style="width: 100%; background: #ffffff; padding: 60px 40px;">
+            <!-- Title -->
+            <h2 style="color: #000000; font-size: 36px; font-weight: 800; margin-bottom: 40px; text-align: left;max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;">What to Watch</h2>
+
+            <!-- Cards Row -->
+            <div style="display: flex; gap: 32px; justify-content: center; align-items: flex-start; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;">
+                <!-- Card 1 -->
+                <div style="flex: 1; min-width: 280px; max-width: 400px;">
+                    <img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p24343761_b_v13_aa.jpg" style="width: 100%; height: 420px; object-fit: cover; object-position: top; display: block;">
+                    <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">YouTube</p>
+                    <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">This is Mark Rober</h3>
+                    <a href="https://www.youtube.com/@MarkRober" target="blank" style="display: inline-block; padding: 10px 24px; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: 600; text-decoration: none; background: transparent; border-radius: 50px; transition: all 0.3s ease;"
+                        onmouseover="this.style.background='#000000'; this.style.color='#ffffff'"
+                        onmouseout="this.style.background='transparent'; this.style.color='#000000'">Watch Now</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div style="flex: 1; min-width: 280px; max-width: 400px;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLng9DPnp42ghx5E_zXoV0nkEfLxzTYjF__pAw266C4-f2YLUASuAyCJCIU127zltN1-mA&s=10" style="width: 100%; height: 420px; object-fit: cover; display: block;">
+                    <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">YouTube</p>
+                    <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Expedition Unknown</h3>
+                    <a href="https://youtube.com/playlist?list=PLiCk2I6PXl5oWKJV43DWpklxNDT4jPlZK&si=3Ob9acNltxMmff8P" target="blank" style="display: inline-block; padding: 10px 24px; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: 600; text-decoration: none; background: transparent; border-radius: 50px; transition: all 0.3s ease;"
+                        onmouseover="this.style.background='#000000'; this.style.color='#ffffff'"
+                        onmouseout="this.style.background='transparent'; this.style.color='#000000'">Watch Now</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div style="flex: 1; min-width: 280px; max-width: 400px;">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNzI3ODRkYzEtZGVjOS00MWNlLWE4OWUtODg4ODkxMzVmMzIwXkEyXkFqcGc@._V1_.jpg" style="width: 100%; height: 420px; object-fit: cover; display: block;">
+                    <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">YouTube</p>
+                    <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Veritasium</h3>
+                    <a href="https://www.youtube.com/@veritasium/videos" target="blank" style="display: inline-block; padding: 10px 24px; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: 600; text-decoration: none; background: transparent; border-radius: 50px; transition: all 0.3s ease;"
+                        onmouseover="this.style.background='#000000'; this.style.color='#ffffff'"
+                        onmouseout="this.style.background='transparent'; this.style.color='#000000'">Watch Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movies to Watch Section -->
+        <div id="movies-section" style="
+          width: 100%;
+          background: #f5f5f7;
+          padding: 60px 40px;
+        ">
+          <!-- Title -->
+          <h2 style="
+            color: #000000;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            text-align: left;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+          ">Movies to Watch</h2>
+
+          <!-- Cards Row -->
+          <div style="
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+          ">
+
+            <!-- Movie Card 1 -->
+            <div style="flex: 1; min-width: 280px; max-width: 400px;">
+                <img src="https://m.media-amazon.com/images/I/81kz06oSUeL.jpg" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
+              <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
+              <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Interstellar</h3>
+              <a href="https://www.netflix.com/bd/title/70305903" target="blank" style="
+                display: inline-block;
+                padding: 10px 24px;
+                border: 2px solid #000000;
+                color: #000000;
+                font-size: 14px;
+                font-weight: 600;
+                text-decoration: none;
+                background: transparent;
+                border-radius: 50px;
+                transition: all 0.3s ease;
+              "
+              onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
+              onmouseout="this.style.background='transparent'; this.style.color='#000000'"
+              >Watch Now</a>
+            </div>
+
+            <!-- Movie Card 2 -->
+            <div style="flex: 1; min-width: 280px; max-width: 400px;">
+                <img src="https://i.ebayimg.com/images/g/f6EAAOSwk5FUwoOs/s-l1200.jpg" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
+              </a>
+              <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
+              <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Inception</h3>
+              <a href="https://www.netflix.com/bd/title/70131314" target="blank" style="
+                display: inline-block;
+                padding: 10px 24px;
+                border: 2px solid #000000;
+                color: #000000;
+                font-size: 14px;
+                font-weight: 600;
+                text-decoration: none;
+                background: transparent;
+                border-radius: 50px;
+                transition: all 0.3s ease;
+              "
+              onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
+              onmouseout="this.style.background='transparent'; this.style.color='#000000'"
+              >Watch Now</a>
+            </div>
+
+            <!-- Movie Card 3 -->
+            <div style="flex: 1; min-width: 280px; max-width: 400px;">
+                <img src="https://resizing.flixster.com/vjp6GCi3rcyDlLV3nDLIHroN-78=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvNDQ5M2UxN2QtZGZjNy00Y2Q2LTkzZDgtMTNiYmJmZGM0ZDFlLmpwZw==" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
+              </a>
+              <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
+              <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">1899</h3>
+              <a href="https://www.netflix.com/bd/title/80214497" target="blank" style="
+                display: inline-block;
+                padding: 10px 24px;
+                border: 2px solid #000000;
+                color: #000000;
+                font-size: 14px;
+                font-weight: 600;
+                text-decoration: none;
+                background: transparent;
+                border-radius: 50px;
+                transition: all 0.3s ease;
+              "
+              onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
+              onmouseout="this.style.background='transparent'; this.style.color='#000000'"
+              >Watch Now</a>
+            </div>
+
+            <!-- Movie Card 4 -->
+            <div style="flex: 1; min-width: 280px; max-width: 400px;">
+                <img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10980706_p_v13_ar.jpg" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
+              </a>
+              <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
+              <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">The Martian</h3>
+              <a href="https://www.netflix.com/title/80058399" target="blank" style="
+                display: inline-block;
+                padding: 10px 24px;
+                border: 2px solid #000000;
+                color: #000000;
+                font-size: 14px;
+                font-weight: 600;
+                text-decoration: none;
+                background: transparent;
+                border-radius: 50px;
+                transition: all 0.3s ease;
+              "
+              onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
+              onmouseout="this.style.background='transparent'; this.style.color='#000000'"
+              >Watch Now</a>
+            </div>
+
+            <!-- Movie Card 5 -->
+            <div style="flex: 1; min-width: 280px; max-width: 400px;">
+                <img src="https://substackcdn.com/image/fetch/$s_!XwQc!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5b21034a-0043-497f-938d-2da47d397ba2_1000x1500.jpeg" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
+              </a>
+              <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
+              <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Shutter Island</h3>
+              <a href="https://www.netflix.com/bd/title/70095139" target="blank" style="
+                display: inline-block;
+                padding: 10px 24px;
+                border: 2px solid #000000;
+                color: #000000;
+                font-size: 14px;
+                font-weight: 600;
+                text-decoration: none;
+                background: transparent;
+                border-radius: 50px;
+                transition: all 0.3s ease;
+              "
+              onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
+              onmouseout="this.style.background='transparent'; this.style.color='#000000'"
+              >Watch Now</a>
+            </div>
+
+            <!-- Movie Card 6 -->
+            <div style="flex: 1; min-width: 280px; max-width: 400px;">
+                <img src="https://theorion.com/wp-content/uploads/2016/11/arrival_ver8.jpg" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
+              </a>
+              <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
+              <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Arrival</h3>
+              <a href="https://www.netflix.com/bd/title/80117799" target="blank" style="
+                display: inline-block;
+                padding: 10px 24px;
+                border: 2px solid #000000;
+                color: #000000;
+                font-size: 14px;
+                font-weight: 600;
+                text-decoration: none;
+                background: transparent;
+                border-radius: 50px;
+                transition: all 0.3s ease;
+              "
+              onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
+              onmouseout="this.style.background='transparent'; this.style.color='#000000'"
+              >Watch Now</a>
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <!-- NASA Style Banner -->
+        <div id="nasa-banner" style="position: relative; width: 100%; min-height: 300px; overflow: hidden; display: flex; align-items: center; margin-top: 0;">
+            <!-- Background Video -->
+            <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+                <source src="Sikkha.pic/space video.mp4" type="video/mp4">
+            </video>
+
+            <!-- Dark overlay -->
+            <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.0) 100%); z-index: 1;"></div>
+
+            <!-- Left Text Content -->
+            <div style="position: relative; z-index: 2; padding: 60px 60px; max-width: 550px;">
+                <h2 style="color: #ffffff; font-size: 36px; font-weight: 800; line-height: 1.2; margin-bottom: 16px;">Explore the Universe of Knowledge</h2>
+                <p style="color: rgba(255,255,255,0.8); font-size: 15px; line-height: 1.6; margin-bottom: 8px;">Stay up-to-date with the latest discoveries, science, and learning resources from Sikkhagrontho.</p>
+                <p style="color: rgba(255,255,255,0.5); font-size: 13px; margin-bottom: 24px;">Powered by NASA</p>
+                <a href="https://www.nasa.gov/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: #ffffff; font-size: 16px; font-weight: 700; text-decoration: none; border-bottom: 2px solid #ffffff; padding-bottom: 2px;">Explore Now →</a>
+            </div>
+        </div>
+
+        <!-- Logo Cards Section -->
+        <div id="logo-cards-section" style="width: 100%; padding: 40px 20px; display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: nowrap; background: transparent; margin: 0 auto; position: relative; z-index: 10;">
+            <!-- Discovery Card -->
+            <a href="https://www.discovery.com/" target="_blank" style="text-decoration: none;">
+                <div style="background: #ffffff; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.border='2px solid #000000'; this.style.transform='scale(1.05)'"
+                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
+                    <img src="Sikkha.pic/Discovery card.png" style="width: 140px; height: auto; object-fit: contain;">
+                </div>
+            </a>
+            
+            <!-- National Geographic Card -->
+            <a href="https://www.nationalgeographic.com" target="_blank" style="text-decoration: none;">
+                <div style="background: #000000; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.border='2px solid #ffffff'; this.style.transform='scale(1.05)'"
+                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
+                    <img src="Sikkha.pic/National geographic card.png" style="width: 140px; height: auto; object-fit: contain;">
+                </div>
+            </a>
+            <!-- NASA Card -->
+            <a href="https://www.nasa.gov" target="_blank" style="text-decoration: none;">
+                <div style="background: #ffffff; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.border='2px solid #000000'; this.style.transform='scale(1.05)'"
+                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
+                    <img src="Sikkha.pic/NASA card.png" style="width: 140px; height: auto; object-fit: contain;">
+                </div>
+            </a>
+
+            <!-- Netflix Card -->
+            <a href="https://www.netflix.com/bd/" target="_blank" style="text-decoration: none;">
+                <div style="background: #000000; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.border='2px solid #ffffff'; this.style.transform='scale(1.05)'"
+                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
+                    <img src="Sikkha.pic/Netflix card.png" style="width: 140px; height: auto; object-fit: contain;">
+                </div>
+            </a>
+           
+            <!-- Wiki Card -->
+            <a href="https://en.wikipedia.org/wiki/Main_Page" target="_blank" style="text-decoration: none;">
+                <div style="background: #000000; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.border='2px solid #ffffff'; this.style.transform='scale(1.05)'"
+                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
+                    <img src="Sikkha.pic/Wiki card.png" style="width: 140px; height: auto; object-fit: contain;">
+                </div>
+            </a>
+            <!-- TEDx Card -->
+            <a href="https://www.ted.com/about/programs-initiatives/tedx-program" target="_blank" style="text-decoration: none;">
+                <div style="background: #000000; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.border='2px solid #ffffff'; this.style.transform='scale(1.05)'"
+                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
+                    <img src="Sikkha.pic/TEDx Card.png" style="width: 140px; height: auto; object-fit: contain;">
+                </div>
+            </a>
+        </div> <!-- logo cards ends -->
+
+        <!-- Mission Section -->
+        <div id="mission-section" style="
+          width: 100%;
+          background: #f2f2f2;
+          padding: 80px 40px;
+          text-align: center;
+        ">
+          <!-- Title -->
+          <h2 style="
+            color: #1a1a1a;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-family: 'Outfit', sans-serif;
+          ">Latest Science Exploration Updates</h2>
+
+          <!-- Yellow Line -->
+          <div style="
+            width: 60px;
+            height: 3px;
+            background: #f5c300;
+            margin: 0 auto 60px;
+          "></div>
+
+          <!-- Content Row -->
+          <div style="
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: left;
+          ">
+            <!-- Left Image -->
+            <div style="flex: 1; min-width: 300px;">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Artemis_II_Launch_%28NHQ20260401_admin_0025%29.jpg/500px-Artemis_II_Launch_%28NHQ20260401_admin_0025%29.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail" style="
+                width: 100%;
+                height: 380px;
+                object-fit: cover;
+                display: block;
+              ">
+            </div>
+
+            <!-- Right Text -->
+            <div style="flex: 1; min-width: 280px;">
+              <h3 style="
+                color: #1a1a1a;
+                font-size: 28px;
+                font-weight: 800;
+                line-height: 1.3;
+                margin-bottom: 20px;
+                font-family: 'Outfit', sans-serif;
+              ">Artemis II<br>Mission</h3>
+
+              <p style="
+                color: #333333;
+                font-size: 16px;
+                line-height: 1.8;
+                font-family: 'Inter', sans-serif;
+              ">Artemis II (April 1–11, 2026) was a crewed flyby of the Moon. It was the first crewed flight beyond low Earth orbit since Apollo 17 in 1972, the first crewed flight of the NASA-led Artemis program, the first crewed flight of the Space Launch System (SLS), and the first crewed flight of the Orion spacecraft, named Integrity by the four-person crew.</p>
+              <a href="https://en.wikipedia.org/wiki/Artemis_II" target="blank" style="display: inline-flex; align-items: center; gap: 10px; background: #f5c300; border: 1px solid rgba(255,255,255,0.6); color: #000000; font-size: 14px; font-weight: 700; letter-spacing: 2px; padding: 14px 28px; text-decoration: none; transition: all 0.3s ease;"
+                    onmouseover="this.style.background='#000000'; this.style.color='#ffffff'"
+                        onmouseout="this.style.background='#f5c300'; this.style.color='#000000'">READ MORE ▶</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expedetion The Horizon Section -->
+        <div id="feature-banner-section" style="
+          position: relative;
+          width: 100%;
+          min-height: 100vh;
+          overflow: hidden;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-start;
+          padding: 60px;
+          background: #efeeee;
+        ">
+         <img src="https://images-assets.nasa.gov/image/iss074e0528083/iss074e0528083~medium.jpg" style="
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+">
+        
+          <!-- Dark Overlay -->
+          <div style="
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+              to right,
+              rgba(0,0,0,0.85) 0%,
+              rgba(0,0,0,0.4) 60%,
+              rgba(0,0,0,0.0) 100%
+            );
+            z-index: 1;
+          "></div>
+        
+          <!-- Left Content -->
+          <div style="
+            position: relative;
+            z-index: 2;
+            max-width: 550px;
+          ">
+            <h2 style="
+              color: #ffffff;
+              font-size: 42px;
+              font-weight: 800;
+              line-height: 1.2;
+              margin-bottom: 20px;
+            ">Expedetion The Horizon</h2>
+        
+            <p style="
+              color: rgba(255,255,255,0.85);
+              font-size: 16px;
+              line-height: 1.7;
+              margin-bottom: 24px;
+            ">Beyond the edge of fear lies a horizon waiting to be explored.
+Every expedition begins with curiosity and the courage to move forward.
+The journey is never only about reaching a destination; it is about discovering new versions of ourselves.
+Storms may appear, paths may disappear, yet the horizon continues to call the dreamers.
+Those who dare to step into the unknown often find the greatest stories hidden there.
+Mountains, oceans, and endless skies become silent teachers of strength and patience.
+An explorer does not fear distance; he fears standing still.
+With every step forward, the impossible slowly becomes achievable.
+The horizon is not merely a line far away—it is a symbol of hope, ambition, and endless possibility.
+True adventure begins the moment we decide not to turn back.</p>
+        
+            <a href="http://127.0.0.1:5500/#explore" target="_blank" style="
+              display: inline-flex;
+              align-items: center;
+              gap: 10px;
+              color: #ffffff;
+              font-size: 16px;
+              font-weight: 800;
+              text-decoration: none;
+            ">Thank you<br>Maruf Raihan<br>Founder, Sikkhagrontho
+              <span style="
+                width: 30px;
+                height: 30px;
+                background: #0e65c0;
+                border-radius: 50%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+              ">→</span>
+            </a>
+          </div>
+        </div>
+    
+        <!-- Explore Section Tabs -->
+        <section id="explore" class="section explore-section">
+            <div class="container text-center">
+                <h2 class="section-title">Explore Resources</h2>
+                <div class="explore-tabs">
+                    <button class="tab-btn active" data-target="hsc">HSC Subjects</button>
+                    <button class="tab-btn" data-target="admission">Admission</button>
+                    <button class="tab-btn" data-target="defence">Defence</button>
+                    <button class="tab-btn" data-target="literature">Novels & Poems</button>
+                </div>
+
+                <!-- HSC Subjects Grid -->
+                <div id="hsc" class="tab-content active">
+                    <div class="grid grid-3" id="hsc-grid">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+
+                <!-- Admission Grid -->
+                <div id="admission" class="tab-content">
+                    <div class="grid grid-3" id="admission-grid">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+
+                <!-- Defence Sections -->
+                <div id="defence" class="tab-content">
+                    <div class="defence-categories">
+                        <div class="defence-cat">
+                            <h3 class="cat-title"><i class="fas fa-shield-halved"></i> Army</h3>
+                            <div class="grid grid-3" id="army-grid"></div>
+                        </div>
+                        <div class="defence-cat">
+                            <h3 class="cat-title"><i class="fas fa-plane"></i> Airforce</h3>
+                            <div class="grid grid-3" id="airforce-grid"></div>
+                        </div>
+                        <div class="defence-cat">
+                            <h3 class="cat-title"><i class="fas fa-ship"></i> Navy</h3>
+                            <div class="grid grid-3" id="navy-grid"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Literature Grid -->
+                <div id="literature" class="tab-content">
+                    <div class="grid grid-3" id="literature-grid">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Auth Section (Login/Register) -->
+        <section id="login" class="section auth-section">
+            <div class="container auth-container">
+                <div class="auth-box" id="login-box">
+                    <h2 class="auth-title">Welcome To Sikkhagrontho</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-username">Username</label>
+                            <input type="text" id="login-username" required placeholder="Enter your username">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="password-input">
+                                <input type="password" id="login-password" required placeholder="Enter your password">
+                                <button type="button" class="password-toggle" data-target="login-password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-full">Login</button>
+                        <p class="auth-switch">Don't have an account? <a href="#" id="show-register">Register Here</a>
+                        </p>
+                    </form>
+                </div>
+
+                <div class="auth-box hidden" id="register-box">
+                    <h2 class="auth-title">Create Account</h2>
+                    <form id="register-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="reg-fullname">Full Name</label>
+                                <input type="text" id="reg-fullname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-college">College Name</label>
+                                <input type="text" id="reg-college" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-phone">Student Phone</label>
+                                <input type="tel" id="reg-phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-guardian">Guardian Phone</label>
+                                <input type="tel" id="reg-guardian" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-blood">Blood Group</label>
+                                <select id="reg-blood" required>
+                                    <option value="">Select Group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-username">Username/UserID</label>
+                                <input type="text" id="reg-username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-password">Password</label>
+                                <div class="password-input">
+                                    <input type="password" id="reg-password" required>
+                                    <button type="button" class="password-toggle" data-target="reg-password">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-photo">Profile Photo (Optional)</label>
+                                <input type="file" id="reg-photo" accept="image/*">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-full mt-2">Create Account</button>
+                        <p class="auth-switch">Already have an account? <a href="#" id="show-login">Login Here</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section profile-section hidden">
+            <div class="container">
+                <div class="profile-header">
+                    <div class="cover-photo"></div>
+                    <div class="profile-info-main">
+                        <div class="profile-avatar-container">
+                            <img src="https://via.placeholder.com/150" alt="Profile Photo" id="profile-img">
+                            <button id="edit-avatar-btn" class="edit-icon"><i class="fas fa-camera"></i></button>
+                        </div>
+                        <div class="profile-text-main">
+                            <h2 id="display-name">User Name</h2>
+                            <p id="display-username">@username</p>
+                        </div>
+                        <div class="profile-actions-header">
+                            <button id="edit-profile-btn" class="btn btn-outline"><i class="fas fa-edit"></i> Edit
+                                Info</button>
+                            <button id="show-id-btn" class="btn btn-primary"><i class="fas fa-id-card"></i> Show ID
+                                Card</button>
+                            <button id="logoutBtn" style="background: transparent; border: 1px solid #ef4444; color: #ef4444; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-details-grid grid grid-2">
+                    <div class="profile-card">
+                        <h3><i class="fas fa-user-graduate"></i> Academic Info</h3>
+                        <p><strong>College:</strong> <span id="profile-college">-</span></p>
+                    </div>
+                    <div class="profile-card">
+                        <h3><i class="fas fa-phone"></i> Contact Info</h3>
+                        <p><strong>Phone:</strong> <span id="profile-phone">-</span></p>
+                        <p><strong>Guardian:</strong> <span id="profile-guardian">-</span></p>
+                    </div>
+                    <div class="profile-card">
+                        <h3><i class="fas fa-droplet"></i> Health Info</h3>
+                        <p><strong>Blood Group:</strong> <span id="profile-blood">-</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Modal (Classes & Books) -->
+        <div id="content-modal" class="modal">
+            <div class="modal-content-wide">
+                <span id="close-content-modal" class="close-modal">&times;</span>
+                <div class="modal-header-dynamic">
+                    <h2 id="modal-title">Subject Name</h2>
+                    <div class="paper-toggle-container" id="paper-toggle-container">
+                        <button class="paper-btn active" data-paper="1st">1st Paper</button>
+                        <button class="paper-btn" data-paper="2nd">2nd Paper</button>
+                    </div>
+                </div>
+                <div id="modal-body-content" class="modal-body-scroll">
+                    <!-- Dynamic content injected here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ID Card Modal -->
+
+        <div id="id-card-modal" class="modal">
+            <div class="modal-content id-card-wrap">
+                <span id="close-id-modal" class="close-modal">&times;</span>
+                <div id="idCardContent" class="digital-id-card">
+                    <div class="id-header">
+                        <div class="id-brand">
+                            <h4>SIKKHAGRONTHO</h4>
+                            <p>Student Identification</p>
+                        </div>
+                    </div>
+                    <div class="id-body">
+                        <img src="https://via.placeholder.com/100" alt="Student" id="id-student-img" class="id-img">
+                        <div class="id-info">
+                            <h3 id="id-name">USER NAME</h3>
+                            <p id="id-uid">ID: 000000</p>
+                            <div class="id-fields">
+                                <p><strong>College:</strong> <span id="id-college">-</span></p>
+                                <p><strong>Blood:</strong> <span id="id-blood">-</span></p>
+                            </div>
+                        </div>
+                        <div id="qrcode" class="id-qr"></div>
+                    </div>
+                    <div class="id-footer">
+                        <p>Official Digital Identity Provided by Sikkhagrontho</p>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="download-id-btn" class="btn btn-primary"><i class="fas fa-download"></i> Download
+                        ID</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notice Section -->
+        <section id="notice" class="section about-section hidden">
+            <div class="container" style="padding: 60px 40px; min-height: 70vh;">
+                <!-- Title -->
+                <h2 style="color: #ffffff; font-size: 36px; font-weight: 700; margin-bottom: 30px;">Notices</h2>
+
+                <!-- Notice 1 -->
+                <div style="margin-bottom: 12px;">
+                    <div onclick="toggleNotice(1)" style="background: #1a2a1a; border: 1px solid #9ee79e; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border-radius: 4px;">
+                        <span style="color: #ffffff; font-size: 18px; font-weight: 600;">1. Purchase Books Now!</span>
+                        <span id="arrow-1" style="color: #4ade80; font-size: 20px; transition: transform 0.3s;">▼</span>
+                    </div>
+                    <div id="notice-body-1" style="display: none; background: #111; border: 1px solid #2d5a2d; border-top: none; padding: 24px; color: rgba(255,255,255,0.8); font-size: 15px; line-height: 1.7; border-radius: 0 0 4px 4px;">
+                        Dear students, order now from <b>Sikkhagrontho</b> to get the books and guides for your HSC and Admission exams. Go to <b>Books</b> and <b>Purchase now!</b>
+                    </div>
+                </div>
+
+                <!-- Notice 2 -->
+                <div style="margin-bottom: 12px;">
+                    <div onclick="toggleNotice(2)" style="background: #1a2a1a; border: 1px solid #9ee79e; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border-radius: 4px;">
+                        <span style="color: #ffffff; font-size: 18px; font-weight: 600;">2. New Notice will coming soon</span>
+                        <span id="arrow-2" style="color: #4ade80; font-size: 20px; transition: transform 0.3s;">▼</span>
+                    </div>
+                    <div id="notice-body-2" style="display: none; background: #111; border: 1px solid #2d5a2d; border-top: none; padding: 24px; color: rgba(255,255,255,0.8); font-size: 15px; line-height: 1.7; border-radius: 0 0 4px 4px;">
+                        Next notice details will appear here.Stay with us!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section hidden">
+            <div class="container">
+                <h2 class="section-title text-center">Contact Us</h2>
+                <div class="contact-guide text-center mb-2">
+                    <p>Have questions? We're here to help you on your academic journey.</p>
+                </div>
+                <div class="contact-box">
+                    <form id="contact-form" class="professional-form">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name</label>
+                            <input type="text" id="contact-name" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email Address</label>
+                            <input type="email" id="contact-email" required placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Subject (Optional)</label>
+                            <input type="text" id="contact-subject" placeholder="What is this regarding?">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" required placeholder="Write your message here..."
+                                rows="5"></textarea>
+                        </div>
+                        <button type="button" onclick="sendMessage()" class="btn btn-primary btn-full shadow-hover">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Panel -->
+        <section id="admin" class="section admin-section hidden">
+            <div class="container">
+                <h2 class="section-title">Admin Control Panel</h2>
+                <div class="admin-stats grid grid-3">
+                    <div class="stat-card">
+                        <h4 id="total-users">0</h4>
+                        <p>Registered Users</p>
+                    </div>
+                </div>
+
+                <div class="admin-table-container mt-2">
+                    <h3>User Directory</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>College</th>
+                                <th>Contact</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-user-list">
+                            <!-- Dynamic content -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3 class="footer-logo">Sikkhagrontho</h3>
+                    <p>Learn. Explore. Achieve.</p>
+                    <img src="sikkha.pic/footer logo.jpeg" style="
+  width: 150px;
+  height: auto;
+  margin-top: 16px;
+  display: block;
+">
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#explore">Explore</a></li>
+                            <li><a href="#notice">Notice</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><i class="fas fa-envelope"></i> sikkhagronthoedu@gmail.com</li>
+                            <li><i class="fas fa-phone"></i> +880 1950*****1</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-founder">
+                <h3 class="founder-name">Maruf Raihan</h3>
+                <p class="founder-title">Founder, Sikkhagrontho</p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright-text">© 2026 Sikkhagrontho. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+
+    <!-- Login Required Prompt Card -->
+    <div id="loginPromptCard" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+        <div style="background: #111827; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 40px 32px; max-width: 360px; width: 90%; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
+            <i class="fa-solid fa-lock" style="font-size: 48px; color: #b50909; margin-bottom: 20px;"></i>
+            <h3 style="color: #ffffff; font-size: 22px; font-weight: 700; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">Login Required</h3>
+            <p style="color: #94a3b8; font-size: 15px; line-height: 1.6; margin-bottom: 28px; font-family: 'Inter', sans-serif;">
+                Please login to access Classes, Books, Novels & Poems content.
+            </p>
+            <div style="display: flex; gap: 12px; justify-content: center;">
+                <button onclick="closeLoginPromptCard()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.3s;">Cancel</button>
+                <button onclick="goToLogin()" style="background: #d01414; border: none; color: #ffffff; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 700; box-shadow: 0 4px 14px 0 rgba(216, 224, 237, 0.3); transition: all 0.3s;">Go to Login</button>
+            </div>
+        </div>
+    </div>
+    <!-- Purchase Prompt Card -->
+    <div id="purchasePromptCard" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+        <div style="background: #111827; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 40px 32px; max-width: 360px; width: 90%; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
+            <i class="fa-solid fa-book" style="font-size: 48px; color: #3b82f6; margin-bottom: 20px;"></i>
+            <h3 style="color: #ffffff; font-size: 22px; font-weight: 700; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">Books Purchase</h3>
+            <p style="color: #94a3b8; font-size: 15px; line-height: 1.6; margin-bottom: 28px; font-family: 'Inter', sans-serif;">
+                To purchase Books, Novels or Poems, please contact us at<br>
+                <strong style="color: #ffffff;">sikkhagronthoedu@gmail.com</strong>
+            </p>
+            <div style="display: flex; gap: 12px; justify-content: center;">
+                <button onclick="closePurchaseCard()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.3s;">Cancel</button>
+                <button onclick="openPurchaseGmail()" style="background: #3b82f6; border: none; color: #ffffff; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 700; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.3); transition: all 0.3s;">Purchase</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
