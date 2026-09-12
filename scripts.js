@@ -159,13 +159,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Defence
         { subject: 'Bangladesh Army', category: 'Defence', title: 'Join Bangladesh Army', url: 'https://youtu.be/OCOPgiIbbbM?si=4v5uLhyqQn6VtWg3', type: 'video', description: 'Bangladesh Army' },
-        { subject: 'Bangladesh Army', category: 'Defence', title: 'Bangladesh Army Anirban 2025', url: 'https://youtu.be/X0_kleDrWi0?si=MaNa4agk-sb0K2_N', type: 'video', description: 'Bangladesh Army' },
+        { subject: 'Bangladesh Army', category: 'Defence', title: 'Bangladesh Army Anirban 2026', url: 'https://youtu.be/VcLKTGfJzn4?si=PTLt4ARRd6txPjC-', type: 'video', description: 'Bangladesh Army' },
        
-        { subject: 'Bangladesh Navy', category: 'Defence', title: 'Join Bangladesh Navy', url: 'https://youtu.be/SXr8JMAaGlQ?si=Fa4el3nSrOKbwl0L', type: 'video', description: 'Bangladesh Navy' },
-        { subject: 'Bangladesh Navy', category: 'Defence', title: 'BANGLADESH NAVY ANIRBAN 2025', url: 'https://youtu.be/TrfRwAsLEcA?si=XxUiQMTnf-gSN8Tk', type: 'video', description: 'Bangladesh Navy' },
+        { subject: 'Bangladesh Navy', category: 'Defence', title: 'Join Bangladesh Navy', url: 'https://youtu.be/75-S3AhXJk0?si=KJXFppG53gcso7JK', type: 'video', description: 'Bangladesh Navy' },
+        { subject: 'Bangladesh Navy', category: 'Defence', title: 'BANGLADESH NAVY ANIRBAN 2025', url: 'https://youtu.be/TrfRwAsLEcA?si=ocgJLz_cvXARAytr', type: 'video', description: 'Bangladesh Navy' },
        
         { subject: 'Bangladesh Air Force', category: 'Defence', title: 'Join Bangladesh Air Force', url: 'https://youtu.be/fq7Gpq-hAdE?si=co99DLaHJxY6dtTR', type: 'video', description: 'Bangladesh Air Force' },
-        { subject: 'Bangladesh Air Force', category: 'Defence', title: 'BANGLADESH Air Force ANIRBAN 2025', url: 'https://youtu.be/jVnMy4HRFgM?si=nZQQrGFfyLDAGxeK', type: 'video', description: 'Bangladesh Air Force' }
+        { subject: 'Bangladesh Air Force', category: 'Defence', title: 'BANGLADESH Air Force ANIRBAN 2025', url: 'https://youtu.be/jVnMy4HRFgM?si=OVKAaKSevrrfNILY', type: 'video', description: 'Bangladesh Air Force' }
 
 
 
@@ -785,25 +785,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggle Home Elements Visibility
     function toggleHomeElements(pageId) {
-        const banner = document.getElementById('nasa-banner');
-        const cards = document.getElementById('logo-cards-section');
-        const movies = document.getElementById('movies-section');
-        const whatToWatch = document.getElementById('hero-middle-space');
+    const banner = document.getElementById('nasa-banner');
+    const cards = document.getElementById('logo-cards-section');
+    const movies = document.getElementById('movies-section');
+    const whatToWatch = document.getElementById('hero-middle-space');
+    const midBanner = document.getElementById('mid-feature-banner');   // 👈 নতুন লাইন
 
-        const isHome = pageId === 'home' || pageId === '' || pageId === '#';
+    const isHome = pageId === 'home' || pageId === '' || pageId === '#';
 
-        if (banner) banner.style.display = isHome ? 'block' : 'none';
-        if (cards) cards.style.display = isHome ? 'flex' : 'none';
-        if (movies) movies.style.display = isHome ? 'block' : 'none';
-        if (whatToWatch) whatToWatch.style.display = isHome ? 'block' : 'none';
-        const didYouKnow = document.getElementById('did-you-know-section');
-        if (didYouKnow) didYouKnow.style.display = isHome ? 'block' : 'none';
-        const featureBanner = document.getElementById('feature-banner-section');
-        if (featureBanner) featureBanner.style.display = isHome ? 'flex' : 'none';
+    if (banner) banner.style.display = isHome ? 'block' : 'none';
+    if (cards) cards.style.display = isHome ? 'flex' : 'none';
+    if (movies) movies.style.display = isHome ? 'block' : 'none';
+    if (whatToWatch) whatToWatch.style.display = isHome ? 'block' : 'none';
+    if (midBanner) midBanner.style.display = isHome ? 'block' : 'none';   // 👈 নতুন লাইন
+    const didYouKnow = document.getElementById('did-you-know-section');
+    if (didYouKnow) didYouKnow.style.display = isHome ? 'block' : 'none';
+    const featureBanner = document.getElementById('feature-banner-section');
+    if (featureBanner) featureBanner.style.display = isHome ? 'flex' : 'none';
 
-        const missionSection = document.getElementById('mission-section');
-        if (missionSection) missionSection.style.display = isHome ? 'block' : 'none';
-    }
+    const missionSection = document.getElementById('mission-section');
+    if (missionSection) missionSection.style.display = isHome ? 'block' : 'none';
+}
 
     // Hash Navigation
     function handleNavigation() {
@@ -999,6 +1001,44 @@ document.addEventListener('DOMContentLoaded', () => {
             '&su=' + subject +
             '&body=' + body;
     };
+
+
+    // Mid Feature Banner Carousel
+(function () {
+    const slides = document.querySelectorAll('.banner-slide');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    let current = 0;
+    let interval;
+
+    function showSlide(index) {
+        slides.forEach((s, i) => {
+            s.style.opacity = i === index ? '1' : '0';
+            s.style.pointerEvents = i === index ? 'auto' : 'none';
+        });
+        dots.forEach((d, i) => {
+            d.style.background = i === index ? '#ffffff' : 'rgba(255,255,255,0.4)';
+        });
+        current = index;
+    }
+
+    function nextSlide() {
+        showSlide((current + 1) % slides.length);
+    }
+
+    function startAutoSlide() {
+        interval = setInterval(nextSlide, 5000);
+    }
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            clearInterval(interval);
+            showSlide(parseInt(dot.dataset.index));
+            startAutoSlide();
+        });
+    });
+
+    if (slides.length > 0) startAutoSlide();
+})();
 
     // Navbar Drag Shine Effect
     const navbar = document.querySelector('.navbar');
