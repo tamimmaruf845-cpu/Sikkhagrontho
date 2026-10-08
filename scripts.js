@@ -161,11 +161,11 @@ document.addEventListener('DOMContentLoaded', () => {
         { subject: 'Bangladesh Army', category: 'Defence', title: 'Join Bangladesh Army', url: 'https://youtu.be/OCOPgiIbbbM?si=4v5uLhyqQn6VtWg3', type: 'video', description: 'Bangladesh Army' },
         { subject: 'Bangladesh Army', category: 'Defence', title: 'Bangladesh Army Anirban 2026', url: 'https://youtu.be/VcLKTGfJzn4?si=PTLt4ARRd6txPjC-', type: 'video', description: 'Bangladesh Army' },
        
-        { subject: 'Bangladesh Navy', category: 'Defence', title: 'Join Bangladesh Navy', url: 'https://youtu.be/75-S3AhXJk0?si=KJXFppG53gcso7JK', type: 'video', description: 'Bangladesh Navy' },
+        { subject: 'Bangladesh Navy', category: 'Defence', title: 'Join Bangladesh Navy', url: 'https://youtu.be/FqI6sI8Vtho', type: 'video', description: 'Bangladesh Navy' },
         { subject: 'Bangladesh Navy', category: 'Defence', title: 'BANGLADESH NAVY ANIRBAN 2025', url: 'https://youtu.be/TrfRwAsLEcA?si=ocgJLz_cvXARAytr', type: 'video', description: 'Bangladesh Navy' },
        
         { subject: 'Bangladesh Air Force', category: 'Defence', title: 'Join Bangladesh Air Force', url: 'https://youtu.be/fq7Gpq-hAdE?si=co99DLaHJxY6dtTR', type: 'video', description: 'Bangladesh Air Force' },
-        { subject: 'Bangladesh Air Force', category: 'Defence', title: 'BANGLADESH Air Force ANIRBAN 2025', url: 'https://youtu.be/jVnMy4HRFgM?si=OVKAaKSevrrfNILY', type: 'video', description: 'Bangladesh Air Force' }
+        { subject: 'Bangladesh Air Force', category: 'Defence', title: 'BANGLADESH Air Force ANIRBAN 2026', url: 'https://youtu.be/WmUdLD6LxDE', type: 'video', description: 'Bangladesh Air Force' }
 
 
 
