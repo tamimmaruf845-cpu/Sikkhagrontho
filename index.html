@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sikkhagrontho - Modern Educational Platform</title>
+    <title>Sikkhagrontho - Educational Platform</title>
     <meta name="description"
         content="Sikkhagrontho is a professional educational platform providing resources for HSC, Admission, Defence, and more.">
     <!-- Google Fonts -->
@@ -509,7 +509,7 @@ At this historic milestone, the spacecraft will be approximately 16.094 billion 
                height: 380px;
                object-fit: cover;
                display: block;
-               border: 10px solid white;
+               border: 7px solid white;
                box-sizing: border-box;
                box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
             </div>
@@ -1067,6 +1067,57 @@ True adventure begins the moment we decide not to turn back.</p>
             </div>
         </div>
     </div>
+    
+    <style>
+  .navbar.nav-transparent {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0)) !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+    backdrop-filter: none !important;
+    transition: transform 0.35s ease, background 0.3s ease;
+  }
+  .navbar.nav-transparent.nav-solid {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0)) !important;
+}
+  .navbar.nav-transparent.nav-hidden {
+    transform: translateY(-100%);
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const nav = document.querySelector(".navbar");
+    const home = document.getElementById("home");
+    let lastY = window.scrollY;
+
+    function onHome() {
+      return getComputedStyle(home).display !== "none";
+    }
+
+    function updateNav() {
+      nav.classList.toggle("nav-transparent", onHome());
+      if (!onHome()) nav.classList.remove("nav-solid", "nav-hidden");
+    }
+
+    window.addEventListener("scroll", function () {
+      if (!onHome()) return;
+      const y = window.scrollY;
+      nav.classList.toggle("nav-solid", y > 80);
+      if (y > lastY && y > 100) nav.classList.add("nav-hidden");
+      else nav.classList.remove("nav-hidden");
+      lastY = y;
+    });
+
+    updateNav();
+    new MutationObserver(updateNav).observe(home, { attributes: true, attributeFilter: ["class", "style"] });
+    window.addEventListener("hashchange", updateNav);
+  });
+</script>
+
 </body>
 
 </html>
