@@ -1598,3 +1598,13 @@ h4,
     font-size: 14px !important;
   }
 }
+
+/* Parallelogram Movie Cards */
+.cf-card {
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+}
+
+/* Parallelogram Watch Buttons */
+.cf-info a {
+  clip-path: polygon(12% 0, 100% 0, 88% 100%, 0 100%);
+}

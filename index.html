@@ -189,214 +189,110 @@
 
     </div>
 </div>
+    
+    <!-- ===== COVERFLOW START: What to Watch & Movies to Watch ===== -->
+<style>
+  .stack-wrap { background: #000; }
+  .cf-wrap { width: 100%; background: #000; padding: 25px 15px; box-sizing: border-box; }
+  #movies-section.cf-wrap { background: #000 !important; }
+  .cf-box { max-width: 1520px; margin: 0 auto; background: #000; border-radius: 24px; padding: 50px 30px; }
+  .cf-title { color: #fff; font-size: 36px; font-weight: 800; max-width: 1200px; margin: 0 auto 10px; text-align: center; font-family: 'Outfit', sans-serif; }
+  .cf-stage { position: relative; height: 560px; overflow: hidden; }
+  .cf-card { position: absolute; top: 50%; left: 50%; width: 370px; height: 493px; overflow: hidden; cursor: pointer; transition: transform .5s ease, filter .5s ease, opacity .5s ease; }
+  .cf-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .cf-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 70px 18px 20px; text-align: center; background: linear-gradient(to top, rgba(0,0,0,.9), rgba(0,0,0,0)); }
+  .cf-info span { display: block; color: rgba(255,255,255,.7); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .cf-info h3 { color: #fff; font-size: 20px; font-weight: 700; margin: 0 0 12px; }
+ /* Common Watch Button */
+.cf-info a {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 12px 20px;
+  text-decoration: none;
+  transition: all .3s ease;
+}
 
-       <div class="stack-wrap">
-        <!-- What to Watch Section -->
-        <div id="hero-middle-space" class="home-only-section" style="width: 100%; background: #ffffff; padding: 25px 15px;">
-            <div style="max-width: 1520px; margin: 0 auto; background: #edeef0; border: 1.5px solid #000000; border-radius: 24px; padding: 50px 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                <!-- Title -->
-                <h2 style="color: #000000; font-size: 36px; font-weight: 800; margin-bottom: 40px; text-align: left; max-width: 1200px; margin-left: auto; margin-right: auto;">What to Watch</h2>
+/* What to Watch - Red Button */
+#hero-middle-space .cf-info a {
+  background: #ff0000;
+  color: #ffffff;
+}
 
-                <!-- Cards Row -->
-                <div style="display: flex; gap: 32px; justify-content: center; align-items: flex-start; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;">
-                    <!-- Card 1 -->
-                    <div style="flex: 1; min-width: 280px; max-width: 400px;">
-                        <img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p24343761_b_v13_aa.jpg" style="width: 100%; height: 420px; object-fit: cover; object-position: top; display: block;">
-                        <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">YouTube</p>
-                        <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">This is Mark Rober</h3>
-                        <a href="https://www.youtube.com/@MarkRober" target="blank" style="display: inline-block; padding: 10px 24px; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: 600; text-decoration: none; background: transparent; border-radius: 50px; transition: all 0.3s ease;"
-                            onmouseover="this.style.background='#e50914'; this.style.color='#ffffff'"
-                            onmouseout="this.style.background='transparent'; this.style.color='#000000'">Watch Now</a>
-                    </div>
+/* Movies to Watch - Black Button */
+#movies-section .cf-info a {
+  background: #000000;
+  color: #ff0000;
+}
+  .cf-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; padding: 10px; }
+  .cf-prev { left: calc(50% - 443px); }
+  .cf-next { right: calc(50% - 443px); }
+</style>
 
-                    <!-- Card 2 -->
-                    <div style="flex: 1; min-width: 280px; max-width: 400px;">
-                        <img src="https://discovery.sndimg.com/content/dam/images/discovery/editorial/shows/e/expedition-x/season-6/dsc_ExpeditionX_s6_social_3000x3000_nologos.jpg.rend.hgtvcom.406.406.suffix/1742490429825.jpeg" style="width: 100%; height: 420px; object-fit: cover; display: block;">
-                        <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">YouTube</p>
-                        <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Expedition Unknown</h3>
-                        <a href="https://youtube.com/playlist?list=PLiCk2I6PXl5oWKJV43DWpklxNDT4jPlZK&si=3Ob9acNltxMmff8P" target="blank" style="display: inline-block; padding: 10px 24px; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: 600; text-decoration: none; background: transparent; border-radius: 50px; transition: all 0.3s ease;"
-                            onmouseover="this.style.background='#e50914'; this.style.color='#ffffff'"
-                            onmouseout="this.style.background='transparent'; this.style.color='#000000'">Watch Now</a>
-                    </div>
+<div class="stack-wrap">
+  <div id="hero-middle-space" class="cf-wrap home-only-section">
+    <div class="cf-box">
+      <h2 class="cf-title">What to Watch</h2>
+      <div class="cf-stage" data-cf="watch"></div>
+    </div>
+  </div>
 
-                    <!-- Card 3 -->
-                    <div style="flex: 1; min-width: 280px; max-width: 400px;">
-                        <img src="https://m.media-amazon.com/images/M/MV5BNzI3ODRkYzEtZGVjOS00MWNlLWE4OWUtODg4ODkxMzVmMzIwXkEyXkFqcGc@._V1_.jpg" style="width: 100%; height: 420px; object-fit: cover; display: block;">
-                        <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">YouTube</p>
-                        <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Veritasium</h3>
-                        <a href="https://www.youtube.com/@veritasium/videos" target="blank" style="display: inline-block; padding: 10px 24px; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: 600; text-decoration: none; background: transparent; border-radius: 50px; transition: all 0.3s ease;"
-                            onmouseover="this.style.background='#e50914'; this.style.color='#ffffff'"
-                            onmouseout="this.style.background='transparent'; this.style.color='#000000'">Watch Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div id="movies-section" class="cf-wrap home-only-section">
+    <div class="cf-box">
+      <h2 class="cf-title">Movies to Watch</h2>
+      <div class="cf-stage" data-cf="movies"></div>
+    </div>
+  </div>
+</div>
 
-        <!-- Movies to Watch Section -->
-        <div id="movies-section" class="home-only-section" style="width: 100%; background: #ffffff; padding: 25px 15px;">
-          <div style="max-width: 1520px; margin: 0 auto; background: #edeef0; border: 1.5px solid #000000; border-radius: 24px; padding: 50px 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-              <!-- Title -->
-              <h2 style="
-                color: #000000;
-                font-size: 36px;
-                font-weight: 800;
-                margin-bottom: 40px;
-                text-align: left;
-                max-width: 1200px;
-                margin-left: auto;
-                margin-right: auto;
-              ">Movies to Watch</h2>
+<script>
+  function coverflow(id, items) {
+    var st = document.querySelector('[data-cf="' + id + '"]');
+    var n = items.length, cur = Math.floor(n / 2), h = Math.floor(n / 2);
+    var X = [0, 145, 253], S = [1, .85, .737], B = [1, .55, .35];
 
-              <!-- Cards Row -->
-              <div style="
-                display: flex;
-                gap: 32px;
-                justify-content: center;
-                align-items: flex-start;
-                flex-wrap: wrap;
-                max-width: 1200px;
-                margin: 0 auto;
-              ">
+    st.innerHTML = items.map(function (d) {
+      return '<div class="cf-card"><img src="' + d[0] + '"><div class="cf-info"><span>' + d[1] + '</span><h3>' + d[2] + '</h3><a href="' + d[3] + '" target="_blank">WATCH NOW</a></div></div>';
+    }).join('') + '<button class="cf-arrow cf-prev"><i class="fas fa-chevron-left"></i></button><button class="cf-arrow cf-next"><i class="fas fa-chevron-right"></i></button>';
 
-                <!-- Movie Card 1 -->
-                <div style="flex: 1; min-width: 280px; max-width: 400px;">
-                    <img src="https://m.media-amazon.com/images/I/81kz06oSUeL.jpg" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
-                  <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
-                  <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Interstellar</h3>
-                  <a href="https://www.netflix.com/bd/title/70305903" target="blank" style="
-                    display: inline-block;
-                    padding: 10px 24px;
-                    border: 2px solid #000000;
-                    color: #000000;
-                    font-size: 14px;
-                    font-weight: 600;
-                    text-decoration: none;
-                    background: transparent;
-                    border-radius: 50px;
-                    transition: all 0.3s ease;
-                  "
-                  onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
-                  onmouseout="this.style.background='transparent'; this.style.color='#000000'"
-                  >Watch Now</a>
-                </div>
+    var cards = st.querySelectorAll('.cf-card');
+    function render() {
+      cards.forEach(function (c, i) {
+        var o = ((i - cur + n + h) % n) - h, a = Math.abs(o);
+        if (a > 2) { c.style.opacity = 0; c.style.pointerEvents = 'none'; c.style.transform = 'translate(-50%,-50%) scale(.5)'; return; }
+        c.style.opacity = 1; c.style.pointerEvents = 'auto'; c.style.zIndex = 10 - a;
+        c.style.filter = 'brightness(' + B[a] + ')';
+        c.style.transform = 'translate(calc(-50% + ' + (o < 0 ? -X[a] : X[a]) + 'px), -50%) scale(' + S[a] + ')';
+      });
+    }
+    cards.forEach(function (c, i) {
+      c.addEventListener('click', function (e) { if (i !== cur) { e.preventDefault(); cur = i; render(); } });
+    });
+    st.querySelector('.cf-prev').onclick = function () { cur = (cur - 1 + n) % n; render(); };
+    st.querySelector('.cf-next').onclick = function () { cur = (cur + 1) % n; render(); };
+    render();
+  }
 
-                <!-- Movie Card 2 -->
-                <div style="flex: 1; min-width: 280px; max-width: 400px;">
-                    <img src="https://i.ebayimg.com/images/g/f6EAAOSwk5FUwoOs/s-l1200.jpg" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
-                  <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
-                  <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Inception</h3>
-                  <a href="https://www.netflix.com/bd/title/70131314" target="blank" style="
-                    display: inline-block;
-                    padding: 10px 24px;
-                    border: 2px solid #000000;
-                    color: #000000;
-                    font-size: 14px;
-                    font-weight: 600;
-                    text-decoration: none;
-                    background: transparent;
-                    border-radius: 50px;
-                    transition: all 0.3s ease;
-                  "
-                  onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
-                  onmouseout="this.style.background='transparent'; this.style.color='#000000'"
-                  >Watch Now</a>
-                </div>
+  coverflow("watch", [
+    ["https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p24343761_b_v13_aa.jpg", "YouTube", "This is Mark Rober", "https://www.youtube.com/@MarkRober"],
+    ["https://discovery.sndimg.com/content/dam/images/discovery/editorial/shows/e/expedition-x/season-6/dsc_ExpeditionX_s6_social_3000x3000_nologos.jpg.rend.hgtvcom.406.406.suffix/1742490429825.jpeg", "YouTube", "Expedition Unknown", "https://youtube.com/playlist?list=PLiCk2I6PXl5oWKJV43DWpklxNDT4jPlZK&si=3Ob9acNltxMmff8P"],
+    ["https://m.media-amazon.com/images/M/MV5BNzI3ODRkYzEtZGVjOS00MWNlLWE4OWUtODg4ODkxMzVmMzIwXkEyXkFqcGc@._V1_.jpg", "YouTube", "Veritasium", "https://www.youtube.com/@veritasium/videos"]
+  ]);
 
-                <!-- Movie Card 3 -->
-                <div style="flex: 1; min-width: 280px; max-width: 400px;">
-                    <img src="https://resizing.flixster.com/vjp6GCi3rcyDlLV3nDLIHroN-78=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvNDQ5M2UxN2QtZGZjNy00Y2Q2LTkzZDgtMTNiYmJmZGM0ZDFlLmpwZw==" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
-                  <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
-                  <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">1899</h3>
-                  <a href="https://www.netflix.com/bd/title/80214497" target="blank" style="
-                    display: inline-block;
-                    padding: 10px 24px;
-                    border: 2px solid #000000;
-                    color: #000000;
-                    font-size: 14px;
-                    font-weight: 600;
-                    text-decoration: none;
-                    background: transparent;
-                    border-radius: 50px;
-                    transition: all 0.3s ease;
-                  "
-                  onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
-                  onmouseout="this.style.background='transparent'; this.style.color='#000000'"
-                  >Watch Now</a>
-                </div>
-
-                <!-- Movie Card 4 -->
-                <div style="flex: 1; min-width: 280px; max-width: 400px;">
-                    <img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10980706_p_v13_ar.jpg" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
-                  <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
-                  <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">The Martian</h3>
-                  <a href="https://www.netflix.com/title/80058399" target="blank" style="
-                    display: inline-block;
-                    padding: 10px 24px;
-                    border: 2px solid #000000;
-                    color: #000000;
-                    font-size: 14px;
-                    font-weight: 600;
-                    text-decoration: none;
-                    background: transparent;
-                    border-radius: 50px;
-                    transition: all 0.3s ease;
-                  "
-                  onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
-                  onmouseout="this.style.background='transparent'; this.style.color='#000000'"
-                  >Watch Now</a>
-                </div>
-
-                <!-- Movie Card 5 -->
-                <div style="flex: 1; min-width: 280px; max-width: 400px;">
-                    <img src="https://substackcdn.com/image/fetch/$s_!XwQc!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5b21034a-0043-497f-938d-2da47d397ba2_1000x1500.jpeg" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
-                  <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
-                  <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Shutter Island</h3>
-                  <a href="https://www.netflix.com/bd/title/70095139" target="blank" style="
-                    display: inline-block;
-                    padding: 10px 24px;
-                    border: 2px solid #000000;
-                    color: #000000;
-                    font-size: 14px;
-                    font-weight: 600;
-                    text-decoration: none;
-                    background: transparent;
-                    border-radius: 50px;
-                    transition: all 0.3s ease;
-                  "
-                  onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
-                  onmouseout="this.style.background='transparent'; this.style.color='#000000'"
-                  >Watch Now</a>
-                </div>
-
-                <!-- Movie Card 6 -->
-                <div style="flex: 1; min-width: 280px; max-width: 400px;">
-                    <img src="https://theorion.com/wp-content/uploads/2016/11/arrival_ver8.jpg" style="width: 100%; aspect-ratio: 2/3; height: auto; object-fit: cover; object-position: center; display: block;">
-                  <p style="color: #555; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; margin-bottom: 6px;">Netflix</p>
-                  <h3 style="color: #000000; font-size: 22px; font-weight: 700; margin-bottom: 16px;">Arrival</h3>
-                  <a href="https://www.netflix.com/bd/title/80117799" target="blank" style="
-                    display: inline-block;
-                    padding: 10px 24px;
-                    border: 2px solid #000000;
-                    color: #000000;
-                    font-size: 14px;
-                    font-weight: 600;
-                    text-decoration: none;
-                    background: transparent;
-                    border-radius: 50px;
-                    transition: all 0.3s ease;
-                  "
-                  onmouseover="this.style.background='#000000'; this.style.color='#e50914'"
-                  onmouseout="this.style.background='transparent'; this.style.color='#000000'"
-                  >Watch Now</a>
-                </div>
-
-              </div>
-          </div>
-        </div>
-        </div> <!-- stack-wrap ends -->
+  coverflow("movies", [
+    ["https://m.media-amazon.com/images/I/81kz06oSUeL.jpg", "Netflix", "Interstellar", "https://www.netflix.com/bd/title/70305903"],
+    ["https://i.ebayimg.com/images/g/f6EAAOSwk5FUwoOs/s-l1200.jpg", "Netflix", "Inception", "https://www.netflix.com/bd/title/70131314"],
+    ["https://resizing.flixster.com/vjp6GCi3rcyDlLV3nDLIHroN-78=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvNDQ5M2UxN2QtZGZjNy00Y2Q2LTkzZDgtMTNiYmJmZGM0ZDFlLmpwZw==", "Netflix", "1899", "https://www.netflix.com/bd/title/80214497"],
+    ["https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10980706_p_v13_ar.jpg", "Netflix", "The Martian", "https://www.netflix.com/title/80058399"],
+    ["https://substackcdn.com/image/fetch/$s_!XwQc!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5b21034a-0043-497f-938d-2da47d397ba2_1000x1500.jpeg", "Netflix", "Shutter Island", "https://www.netflix.com/bd/title/70095139"],
+    ["https://theorion.com/wp-content/uploads/2016/11/arrival_ver8.jpg", "Netflix", "Arrival", "https://www.netflix.com/bd/title/80117799"]
+  ]);
+</script>
+<!-- ===== COVERFLOW END ===== -->
 
 
-        <style>
+ <style>
   .logo-card {
     border: 2px solid transparent;
     border-radius: 16px;
