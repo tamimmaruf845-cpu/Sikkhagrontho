@@ -396,79 +396,92 @@
         </div> <!-- stack-wrap ends -->
 
 
-        <!-- NASA Style Banner -->
-        <div id="nasa-banner" class="home-only-section" style="position: relative; width: 100%; min-height: 300px; overflow: hidden; display: flex; align-items: center; margin-top: 0;">
-            <!-- Background Video -->
-            <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-                <source src="Sikkha.pic/space video.mp4" type="video/mp4">
-            </video>
+        <style>
+  .logo-card {
+    border: 2px solid transparent;
+    border-radius: 16px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 110px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .logo-card.light { background: #ffffff; }
+  .logo-card.dark { background: #000000; }
+  .logo-card.light:hover { border-color: #000000; transform: scale(1.05); }
+  .logo-card.dark:hover { border-color: #ffffff; transform: scale(1.05); }
+  .logo-card img { width: 140px; height: auto; object-fit: contain; }
+</style>
 
-            <!-- Dark overlay -->
-            <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.0) 100%); z-index: 1;"></div>
+<!-- NASA Style Banner + Logo Cards -->
+<div id="nasa-banner" class="home-only-section" style="position: relative; width: 100%; overflow: hidden; margin-top: 0;">
+    <!-- Background Video -->
+    <video id="nasa-video" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <source src="Sikkha.pic/space video.mp4" type="video/mp4">
+    </video>
 
-            <!-- Left Text Content -->
-            <div style="position: relative; z-index: 2; padding: 60px 60px; max-width: 550px;">
-                <h2 style="color: #ffffff; font-size: 36px; font-weight: 800; line-height: 1.2; margin-bottom: 16px;">Explore the Universe of Knowledge</h2>
-                <p style="color: rgba(255,255,255,0.8); font-size: 15px; line-height: 1.6; margin-bottom: 8px;">Stay up-to-date with the latest discoveries, science, and learning resources from Sikkhagrontho.</p>
-                <p style="color: rgba(255,255,255,0.5); font-size: 13px; margin-bottom: 24px;">Powered by NASA</p>
-                <a href="https://www.nasa.gov/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: #ffffff; font-size: 16px; font-weight: 700; text-decoration: none; border-bottom: 2px solid #ffffff; padding-bottom: 2px;">Explore Now →</a>
+    <!-- Dark overlay -->
+    <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.8) 100%); z-index: 1;"></div>
+
+    <!-- Pause / Play button -->
+    <button id="nasa-toggle" aria-label="Pause video" onclick="
+        var v = document.getElementById('nasa-video');
+        var i = this.querySelector('i');
+        if (v.paused) { v.play(); i.className = 'fas fa-pause'; }
+        else { v.pause(); i.className = 'fas fa-play'; }"
+        style="position: absolute; top: 20px; left: 20px; z-index: 3; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); background: rgba(0,0,0,0.6); color: #ffffff; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0;">
+        <i class="fas fa-pause"></i>
+    </button>
+
+    <!-- Content (text on top, logo cards at bottom) -->
+    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; min-height: 720px;">
+
+        <!-- Center text -->
+        <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 80px 30px 20px;">
+            <div style="max-width: 780px; text-align: center;">
+                <h2 style="color: #ffffff; font-size: 22px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; font-family: 'Outfit', sans-serif;">Explore the Universe of Knowledge</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 17px; line-height: 1.7; margin-bottom: 8px; font-family: 'Inter', sans-serif;">Stay up-to-date with the latest discoveries, science, and learning resources from Sikkhagrontho.</p>
+                <p style="color: rgba(255,255,255,0.55); font-size: 13px; margin-bottom: 30px; font-family: 'Inter', sans-serif;">Powered by Discovery, National Geographic, NASA, Netflix, Wikipedia, TEDx</p>
+                <a href="#" style="display: inline-flex; align-items: center; gap: 16px; text-decoration: none; color: #ffffff;"
+   onmouseover="this.firstElementChild.style.background='#ffffff'"
+   onmouseout="this.firstElementChild.style.background='#f5c300'">
+    <span style="width: 56px; height: 56px; background: #f5c300; display: inline-flex; align-items: center; justify-content: center; transition: background 0.3s ease;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="square" style="transform: rotate(135deg);">
+            <path d="M6 18L18 6M8 6h10v10"/>
+        </svg>
+    </span>
+    <span style="font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 20px; line-height: 1.2; text-align: left;">Explore<br>Now</span>
+</a>
             </div>
         </div>
 
-        <!-- Logo Cards Section -->
-        <div id="logo-cards-section" class="home-only-section" style="width: 100%; padding: 40px 20px; display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: nowrap; background: transparent; margin: 0 auto; position: relative; z-index: 10;">
-            <!-- Discovery Card -->
+        <!-- Logo Cards -->
+        <div id="logo-cards-section" style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: nowrap; padding: 20px 20px 50px;">
             <a href="https://www.discovery.com/" target="_blank" style="text-decoration: none;">
-                <div style="background: #ffffff; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
-                    onmouseover="this.style.border='2px solid #000000'; this.style.transform='scale(1.05)'"
-                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
-                    <img src="Sikkha.pic/Discovery card.png" style="width: 140px; height: auto; object-fit: contain;">
-                </div>
+                <div class="logo-card light"><img src="Sikkha.pic/Discovery card.png"></div>
             </a>
-            
-            <!-- National Geographic Card -->
             <a href="https://www.nationalgeographic.com" target="_blank" style="text-decoration: none;">
-                <div style="background: #000000; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
-                    onmouseover="this.style.border='2px solid #ffffff'; this.style.transform='scale(1.05)'"
-                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
-                    <img src="Sikkha.pic/National geographic card.png" style="width: 140px; height: auto; object-fit: contain;">
-                </div>
+                <div class="logo-card dark"><img src="Sikkha.pic/National geographic card.png"></div>
             </a>
-            <!-- NASA Card -->
             <a href="https://www.nasa.gov" target="_blank" style="text-decoration: none;">
-                <div style="background: #ffffff; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
-                    onmouseover="this.style.border='2px solid #000000'; this.style.transform='scale(1.05)'"
-                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
-                    <img src="Sikkha.pic/NASA card.png" style="width: 140px; height: auto; object-fit: contain;">
-                </div>
+                <div class="logo-card light"><img src="Sikkha.pic/NASA card.png"></div>
             </a>
-
-            <!-- Netflix Card -->
             <a href="https://www.netflix.com/bd/" target="_blank" style="text-decoration: none;">
-                <div style="background: #000000; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
-                    onmouseover="this.style.border='2px solid #ffffff'; this.style.transform='scale(1.05)'"
-                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
-                    <img src="Sikkha.pic/Netflix card.png" style="width: 140px; height: auto; object-fit: contain;">
-                </div>
+                <div class="logo-card dark"><img src="Sikkha.pic/Netflix card.png"></div>
             </a>
-           
-            <!-- Wiki Card -->
             <a href="https://en.wikipedia.org/wiki/Main_Page" target="_blank" style="text-decoration: none;">
-                <div style="background: #000000; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
-                    onmouseover="this.style.border='2px solid #ffffff'; this.style.transform='scale(1.05)'"
-                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
-                    <img src="Sikkha.pic/Wiki card.png" style="width: 140px; height: auto; object-fit: contain;">
-                </div>
+                <div class="logo-card dark"><img src="Sikkha.pic/Wiki card.png"></div>
             </a>
-            <!-- TEDx Card -->
             <a href="https://www.ted.com/about/programs-initiatives/tedx-program" target="_blank" style="text-decoration: none;">
-                <div style="background: #000000; border: 2px solid transparent; border-radius: 16px; padding: 15px 25px; display: flex; align-items: center; justify-content: center; width: 200px; height: 110px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
-                    onmouseover="this.style.border='2px solid #ffffff'; this.style.transform='scale(1.05)'"
-                    onmouseout="this.style.border='2px solid transparent'; this.style.transform='scale(1)'">
-                    <img src="Sikkha.pic/TEDx Card.png" style="width: 140px; height: auto; object-fit: contain;">
-                </div>
+                <div class="logo-card dark"><img src="Sikkha.pic/TEDx Card.png"></div>
             </a>
-        </div> <!-- logo cards ends -->
+        </div>
+    </div>
+</div>
 
         <!-- Mission Section -->
         <div id="mission-section" class="home-only-section" style="
